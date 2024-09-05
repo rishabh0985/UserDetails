@@ -1,0 +1,15 @@
+.custom-datepicker {
+  height: 40px;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px; /* Makes it look more like a box */
+  font-size: 16px;
+  padding: 10px; /* Increased padding for a bigger input field */
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+}
+
+.custom-datepicker:focus {
+  border-color: #000;
+}
