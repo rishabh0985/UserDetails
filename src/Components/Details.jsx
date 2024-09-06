@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const SimpleForm = () => {
+const Details = () => {
   const [formData, setFormData] = useState({
     username: "",
     fullName: "",
@@ -10,6 +10,8 @@ const SimpleForm = () => {
     address: "",
     pincode: "",
     dob: null,
+    mobile: "",
+    countryCode: "+91", // Default to India
   });
 
   const [showCalendar, setShowCalendar] = useState(false);
@@ -21,7 +23,7 @@ const SimpleForm = () => {
 
   const handleDateChange = (date) => {
     setFormData({ ...formData, dob: date });
-    setShowCalendar(false); // Close calendar after date selection
+    setShowCalendar(false);
   };
 
   const toggleCalendar = () => {
@@ -30,8 +32,11 @@ const SimpleForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
     alert("Form submitted successfully!");
+  };
+
+  const handleCountryCodeChange = (e) => {
+    setFormData({ ...formData, countryCode: e.target.value });
   };
 
   return (
@@ -41,7 +46,9 @@ const SimpleForm = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        backgroundColor: "#f0f0f0",
+        backgroundImage: `url("https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         padding: "20px",
       }}
     >
@@ -57,7 +64,7 @@ const SimpleForm = () => {
         }}
       >
         <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
-          User Details : 🙂
+          User Details
         </h3>
 
         <div style={{ marginBottom: "15px" }}>
@@ -74,6 +81,8 @@ const SimpleForm = () => {
               borderRadius: "5px",
               border: "1px solid #ccc",
             }}
+            pattern="[A-Za-z]*"
+            title="Only characters are allowed"
           />
         </div>
 
@@ -91,6 +100,8 @@ const SimpleForm = () => {
               borderRadius: "5px",
               border: "1px solid #ccc",
             }}
+            pattern="[A-Za-z\s]*"
+            title="Only characters are allowed"
           />
         </div>
 
@@ -129,6 +140,45 @@ const SimpleForm = () => {
         </div>
 
         <div style={{ marginBottom: "15px" }}>
+          <label>Mobile Number</label>
+          <div style={{ display: "flex", gap: "15px" }}>
+            <select
+              name="countryCode"
+              value={formData.countryCode}
+              onChange={handleCountryCodeChange}
+              style={{
+                padding: "10px",
+                borderRadius: "5px 0 0 5px",
+                border: "1px solid #ccc",
+                backgroundColor: "#f0f0f0",
+              }}
+            >
+              <option value="+91">+91 (India)</option>
+              <option value="+1">+1 (USA)</option>
+              <option value="+44">+44 (UK)</option>
+              <option value="+61">+61 (Australia)</option>
+              {/* Add more country codes as needed */}
+            </select>
+            <input
+              type="text"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleInputChange}
+              placeholder="Enter Mobile Number"
+              style={{
+                width: "100%",
+                padding: "10px",
+                borderRadius: "0 5px 5px 0",
+                border: "1px solid #ccc",
+              }}
+              pattern="\d*"
+              maxLength="10"
+              title="Only numbers are allowed"
+            />
+          </div>
+        </div>
+
+        <div style={{ marginBottom: "15px" }}>
           <label>Pincode</label>
           <input
             type="text"
@@ -142,6 +192,9 @@ const SimpleForm = () => {
               borderRadius: "5px",
               border: "1px solid #ccc",
             }}
+            pattern="\d*"
+            maxLength="6"
+            title="Only numbers are allowed"
           />
         </div>
 
@@ -191,6 +244,19 @@ const SimpleForm = () => {
           </div>
         </div>
 
+        <div style={{ marginBottom: "15px" }}>
+          <label>Upload File</label>
+          <input
+            type="file"
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
+          />
+        </div>
+
         <button
           type="submit"
           style={{
@@ -210,4 +276,4 @@ const SimpleForm = () => {
   );
 };
 
-export default SimpleForm;
+export default Details;
