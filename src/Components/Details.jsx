@@ -235,8 +235,6 @@ const Details = () => {
                 <Calendar
                   onChange={handleDateChange}
                   value={formData.dob}
-                  maxDetail="month"
-                  minDetail="month"
                   showNavigation
                 />
               </div>
