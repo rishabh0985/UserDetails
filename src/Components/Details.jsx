@@ -61,14 +61,25 @@ const Details = () => {
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           width: "100%",
           maxWidth: "400px",
+          padding: "3rem",
         }}
       >
         <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
           User Details
         </h3>
 
-        <div style={{ marginBottom: "15px" }}>
-          <label>Username</label>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500px",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
+          <label> Username</label>
           <input
             type="text"
             name="username"
@@ -78,15 +89,25 @@ const Details = () => {
             style={{
               width: "100%",
               padding: "10px",
-              borderRadius: "5px",
               border: "1px solid #ccc",
+              boxSizing: "border-box",
+              marginBottom: "10px",
             }}
-            // pattern="[A-Za-z]*"
             title="Only characters are allowed"
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500%",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Full Name</label>
           <input
             type="text"
@@ -99,13 +120,25 @@ const Details = () => {
               padding: "10px",
               borderRadius: "5px",
               border: "1px solid #ccc",
+              boxSizing: "border-box",
+              marginBottom: "10px",
             }}
             pattern="[A-Za-z\s]*"
             title="Only characters are allowed"
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500%",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Email</label>
           <input
             type="email"
@@ -118,11 +151,23 @@ const Details = () => {
               padding: "10px",
               borderRadius: "5px",
               border: "1px solid #ccc",
+              boxSizing: "border-box",
+              marginBottom: "10px",
             }}
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500px",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Address</label>
           <input
             type="text"
@@ -135,11 +180,23 @@ const Details = () => {
               padding: "10px",
               borderRadius: "5px",
               border: "1px solid #ccc",
+              boxSizing: "border-box",
+              marginBottom: "10px",
             }}
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500px",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Mobile Number</label>
           <div style={{ display: "flex", gap: "15px" }}>
             <select
@@ -151,13 +208,14 @@ const Details = () => {
                 borderRadius: "5px 0 0 5px",
                 border: "1px solid #ccc",
                 backgroundColor: "#f0f0f0",
+                boxSizing: "border-box",
+                marginBottom: "10px",
               }}
             >
               <option value="+91">+91 (India)</option>
               <option value="+1">+1 (USA)</option>
               <option value="+44">+44 (UK)</option>
               <option value="+61">+61 (Australia)</option>
-              {/* Add more country codes as needed */}
             </select>
             <input
               type="text"
@@ -170,15 +228,26 @@ const Details = () => {
                 padding: "10px",
                 borderRadius: "0 5px 5px 0",
                 border: "1px solid #ccc",
+                boxSizing: "border-box",
+                marginBottom: "10px",
               }}
-              pattern="\d*"
               maxLength="10"
               title="Only numbers are allowed"
             />
           </div>
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500px",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Pincode</label>
           <input
             type="text"
@@ -191,6 +260,8 @@ const Details = () => {
               padding: "10px",
               borderRadius: "5px",
               border: "1px solid #ccc",
+              boxSizing: "border-box",
+              marginBottom: "10px",
             }}
             pattern="\d*"
             maxLength="6"
@@ -198,7 +269,17 @@ const Details = () => {
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500px",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Date of Birth</label>
           <div
             style={{
@@ -219,6 +300,8 @@ const Details = () => {
                 borderRadius: "5px",
                 border: "1px solid #ccc",
                 cursor: "pointer",
+                boxSizing: "border-box",
+                marginBottom: "10px",
               }}
             />
             {showCalendar && (
@@ -230,6 +313,8 @@ const Details = () => {
                   backgroundColor: "#fff",
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                   borderRadius: "5px",
+                  boxSizing: "border-box",
+                  marginBottom: "10px",
                 }}
               >
                 <Calendar
@@ -242,7 +327,17 @@ const Details = () => {
           </div>
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
+        <div
+          style={{
+            marginBottom: "15px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            maxWidth: "500px",
+            margin: "0 auto",
+            gap: "2px",
+          }}
+        >
           <label>Upload File</label>
           <input
             type="file"
@@ -251,10 +346,11 @@ const Details = () => {
               padding: "10px",
               borderRadius: "5px",
               border: "1px solid #ccc",
+              boxSizing: "border-box",
+              marginBottom: "10px",
             }}
           />
         </div>
-
         <button
           type="submit"
           style={{
@@ -265,6 +361,7 @@ const Details = () => {
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
+            marginTop: "20px",
           }}
         >
           Submit
