@@ -2,206 +2,188 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const Details = () => {
-  const [isFocused, setIsFocused] = useState({
-    name: false,
-    Username: false,
-    mobile: false,
-    email: false,
-    address: false,
-    state: false,
-    pincode: false,
-    dob: false,
+const SimpleForm = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    fullName: "",
+    email: "",
+    address: "",
+    pincode: "",
+    dob: null,
   });
 
-  const [dob, setDob] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
 
-  const handleFocus = (field) => {
-    setIsFocused({ ...isFocused, [field]: true });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleBlur = (field) => {
-    setIsFocused({ ...isFocused, [field]: false });
+  const handleDateChange = (date) => {
+    setFormData({ ...formData, dob: date });
+    setShowCalendar(false); // Close calendar after date selection
   };
 
   const toggleCalendar = () => {
     setShowCalendar(!showCalendar);
   };
 
-  const handleDateChange = (date) => {
-    setDob(date);
-    setShowCalendar(false); // Close the calendar after selecting a date
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+    alert("Form submitted successfully!");
   };
 
   return (
     <div
       style={{
-        flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundColor: "#f0f0f0",
         padding: "20px",
-        maxWidth: "600px",
-        margin: "auto",
-        backgroundColor: "#f5f5f5", // Light background color
-        borderRadius: "10px",
       }}
     >
-      <div
+      <form
+        onSubmit={handleSubmit}
         style={{
-          flexDirection: "column",
-          display: "flex",
-          gap: "20px", // Increased gap for better spacing
+          backgroundColor: "#fff",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+          width: "100%",
+          maxWidth: "400px",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          <label>Enter Your Full-Name</label>
+        <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
+          User Details : 🙂
+        </h3>
+
+        <div style={{ marginBottom: "15px" }}>
+          <label>Username</label>
           <input
-            name="name"
-            placeholder="Enter Your Name"
-            onFocus={() => handleFocus("name")}
-            onBlur={() => handleBlur("name")}
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleInputChange}
+            placeholder="Enter Username"
             style={{
-              height: "30px",
               width: "100%",
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: isFocused.name ? "#000" : "rgba(0, 0, 0, 0.3)",
-              fontSize: "15px",
-              padding: "5px",
-              outline: "none",
-              transition: "border-color 0.3s ease",
-            }}
-          />
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          <label>Enter Username</label>
-          <input
-            name="Username"
-            placeholder="Enter Your Name"
-            onFocus={() => handleFocus("Username")}
-            onBlur={() => handleBlur("Username")}
-            style={{
-              height: "30px",
-              width: "100%",
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: isFocused.Username ? "#000" : "rgba(0, 0, 0, 0.3)",
-              fontSize: "15px",
-              padding: "5px",
-              outline: "none",
-              transition: "border-color 0.3s ease",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
             }}
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          <label>Mobile Number</label>
+        <div style={{ marginBottom: "15px" }}>
+          <label>Full Name</label>
           <input
-            name="mobile"
-            placeholder="Enter Your Mobile Number"
-            onFocus={() => handleFocus("mobile")}
-            onBlur={() => handleBlur("mobile")}
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleInputChange}
+            placeholder="Enter Full Name"
             style={{
-              height: "30px",
               width: "100%",
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: isFocused.mobile ? "#000" : "rgba(0, 0, 0, 0.3)",
-              fontSize: "15px",
-              padding: "5px",
-              outline: "none",
-              transition: "border-color 0.3s ease",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
             }}
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+        <div style={{ marginBottom: "15px" }}>
           <label>Email</label>
           <input
+            type="email"
             name="email"
-            placeholder="Enter Your Email"
-            onFocus={() => handleFocus("email")}
-            onBlur={() => handleBlur("email")}
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Enter Email"
             style={{
-              height: "30px",
               width: "100%",
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: isFocused.email ? "#000" : "rgba(0, 0, 0, 0.3)",
-              fontSize: "15px",
-              padding: "5px",
-              outline: "none",
-              transition: "border-color 0.3s ease",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
             }}
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+        <div style={{ marginBottom: "15px" }}>
           <label>Address</label>
           <input
+            type="text"
             name="address"
-            placeholder="Enter Your Address"
-            onFocus={() => handleFocus("address")}
-            onBlur={() => handleBlur("address")}
+            value={formData.address}
+            onChange={handleInputChange}
+            placeholder="Enter Address"
             style={{
-              height: "30px",
               width: "100%",
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: isFocused.address ? "#000" : "rgba(0, 0, 0, 0.3)",
-              fontSize: "15px",
-              padding: "5px",
-              outline: "none",
-              transition: "border-color 0.3s ease",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
             }}
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+        <div style={{ marginBottom: "15px" }}>
+          <label>Pincode</label>
+          <input
+            type="text"
+            name="pincode"
+            value={formData.pincode}
+            onChange={handleInputChange}
+            placeholder="Enter Pincode"
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: "15px" }}>
           <label>Date of Birth</label>
           <div
             style={{
-              height: "40px",
-              width: "100%",
-              borderWidth: "3px",
-              borderStyle: "solid",
-              borderColor: isFocused.dob ? "#000" : "rgba(0, 0, 0, 0.3)",
-              padding: "5px",
-              transition: "border-color 0.3s ease",
+              position: "relative",
               display: "flex",
               alignItems: "center",
-              borderRadius: "5px",
-              boxSizing: "border-box",
-              cursor: "pointer",
-              position: "relative", // Important for positioning calendar
             }}
-            onClick={toggleCalendar}
           >
             <input
               type="text"
-              value={dob ? dob.toLocaleDateString() : ""}
+              value={formData.dob ? formData.dob.toLocaleDateString() : ""}
+              onClick={toggleCalendar}
               readOnly
-              placeholder="Select Your Date of Birth"
+              placeholder="Select Date of Birth"
               style={{
                 width: "100%",
-                height: "100%",
-                border: "none",
-                fontSize: "16px",
-                outline: "none",
-                padding: "0",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+                cursor: "pointer",
               }}
             />
             {showCalendar && (
               <div
                 style={{
                   position: "absolute",
-                  top: "40px",
-                  zIndex: 1,
+                  top: "45px",
+                  zIndex: "10",
+                  backgroundColor: "#fff",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                  borderRadius: "5px",
                 }}
               >
                 <Calendar
                   onChange={handleDateChange}
-                  value={dob}
-                  view="month"
+                  value={formData.dob}
+                  maxDetail="month"
+                  minDetail="month"
                   showNavigation
                 />
               </div>
@@ -209,73 +191,23 @@ const Details = () => {
           </div>
         </div>
 
-        <div
+        <button
+          type="submit"
           style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "20px", // Adjusted gap for better spacing
-            justifyContent: "space-between",
+            width: "100%",
+            padding: "10px",
+            backgroundColor: "#4CAF50",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
           }}
         >
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              gap: "5px",
-            }}
-          >
-            <label>State</label>
-            <input
-              name="state"
-              placeholder="Enter Your State"
-              onFocus={() => handleFocus("state")}
-              onBlur={() => handleBlur("state")}
-              style={{
-                height: "30px",
-                width: "100%",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: isFocused.state ? "#000" : "rgba(0, 0, 0, 0.3)",
-                fontSize: "15px",
-                padding: "5px",
-                outline: "none",
-                transition: "border-color 0.3s ease",
-              }}
-            />
-          </div>
-
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              gap: "5px",
-            }}
-          >
-            <label>Pincode</label>
-            <input
-              name="pincode"
-              placeholder="Enter Your Pincode"
-              onFocus={() => handleFocus("pincode")}
-              onBlur={() => handleBlur("pincode")}
-              style={{
-                height: "30px",
-                width: "100%",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: isFocused.pincode ? "#000" : "rgba(0, 0, 0, 0.3)",
-                fontSize: "15px",
-                padding: "5px",
-                outline: "none",
-                transition: "border-color 0.3s ease",
-              }}
-            />
-          </div>
-        </div>
-      </div>
+          Submit
+        </button>
+      </form>
     </div>
   );
 };
 
-export default Details;
+export default SimpleForm;
