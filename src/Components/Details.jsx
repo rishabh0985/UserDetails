@@ -11,7 +11,7 @@ const Details = () => {
     pincode: "",
     dob: null,
     mobile: "",
-    countryCode: "+91", // Default to India
+    countryCode: "+91",
   });
 
   const [showCalendar, setShowCalendar] = useState(false);
@@ -81,7 +81,7 @@ const Details = () => {
               borderRadius: "5px",
               border: "1px solid #ccc",
             }}
-            pattern="[A-Za-z]*"
+            // pattern="[A-Za-z]*"
             title="Only characters are allowed"
           />
         </div>
