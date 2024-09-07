@@ -95,7 +95,7 @@ const Details = () => {
               boxSizing: "border-box",
               marginBottom: "10px",
             }}
-            pattern="[A-Za-z0-9]*"
+            // pattern="[A-Za-z0-9]*"
             maxLength={20}
             title="Only characters are allowed"
           />
