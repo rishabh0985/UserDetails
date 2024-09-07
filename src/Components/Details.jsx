@@ -50,6 +50,7 @@ const Details = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         padding: "20px",
+        // backgroundColor: "pink",
       }}
     >
       <form
@@ -86,6 +87,7 @@ const Details = () => {
             value={formData.username}
             onChange={handleInputChange}
             placeholder="Enter Username"
+            // value={formValues.username}
             style={{
               width: "100%",
               padding: "10px",
@@ -93,6 +95,8 @@ const Details = () => {
               boxSizing: "border-box",
               marginBottom: "10px",
             }}
+            pattern="[A-Za-z0-9]*"
+            maxLength={20}
             title="Only characters are allowed"
           />
         </div>
@@ -124,6 +128,7 @@ const Details = () => {
               marginBottom: "10px",
             }}
             pattern="[A-Za-z\s]*"
+            maxLength={25}
             title="Only characters are allowed"
           />
         </div>
@@ -221,7 +226,12 @@ const Details = () => {
               type="text"
               name="mobile"
               value={formData.mobile}
-              onChange={handleInputChange}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (/^\d*$/.test(value)) {
+                  handleInputChange(e); // Only call the change handler if the input is a number
+                }
+              }}
               placeholder="Enter Mobile Number"
               style={{
                 width: "100%",
@@ -253,7 +263,12 @@ const Details = () => {
             type="text"
             name="pincode"
             value={formData.pincode}
-            onChange={handleInputChange}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (/^\d*$/.test(value)) {
+                handleInputChange(e);
+              }
+            }}
             placeholder="Enter Pincode"
             style={{
               width: "100%",
@@ -263,7 +278,7 @@ const Details = () => {
               boxSizing: "border-box",
               marginBottom: "10px",
             }}
-            pattern="\d*"
+            pattern="[0-9]*"
             maxLength="6"
             title="Only numbers are allowed"
           />
